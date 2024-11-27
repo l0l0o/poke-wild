@@ -18,6 +18,7 @@ import {
 const Index = () => {
   const randomPokemons = shuffleArray(useGetPkmn());
   const randomTypes = shuffleArray(useGetTypes());
+  const randomPokemonName = useGetPkmnRandom();
 
   const searchByName = (pokemonName: string) => {
     router.push("/hub/pokedex/pokemons/details/" + pokemonName);
@@ -72,7 +73,7 @@ const Index = () => {
             value={text}
             onSubmitEditing={() => searchByName(text)}
           />
-          <TouchableOpacity onPress={() => searchByName(RandomName)}>
+          <TouchableOpacity onPress={() => searchByName(randomPokemonName)}>
             <Ionicons name="dice" size={32} color="black" />
           </TouchableOpacity>
         </View>

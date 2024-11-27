@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 
 const useGetPkmnRandom = () => {
-  const [pokemon, setPokemon] = useState("");
-  const [randomNumber, setRandomNumber] = useState(Number);
+  const [pokemonName, setPokemonName] = useState("");
 
   function getRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  setRandomNumber(getRandomNumber(0, 897));
-
   useEffect(() => {
+    const random = getRandomNumber(0, 897);
     (async () => {
-      const pokemonJSON = await fetch(
-        "https://pokebuildapi.fr/api/v1/pokemon/" + randomNumber
-      );
+      console.log("🚀 ~ random:", random);
 
+      const pokemonJSON = await fetch(
+        "https://pokebuildapi.fr/api/v1/pokemon/" + random
+      );
       const pokemonData = await pokemonJSON.json();
-      setPokemon(pokemonData);
+
+      setPokemonName(pokemonData.name);
+      console.log("🚀 ~ useGetPkmnRandom ~ pokemon:", pokemonName);
     })();
   }, []);
 
-  return pokemon;
+  return pokemonName;
 };
 
 export default useGetPkmnRandom;

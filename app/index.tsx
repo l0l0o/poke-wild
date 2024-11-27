@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { Audio } from "expo-av";
 import FirstScreen from "@/components/page-components/FirstScreen";
-// import playSound from "@/hooks/playSound";
 
 const Index = () => {
   const handleOnPress = () => {
